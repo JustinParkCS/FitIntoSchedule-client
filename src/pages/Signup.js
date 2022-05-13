@@ -11,7 +11,7 @@ const Signup = () => {
     // event.preventDefault();
     if (password === confirmPassword) {
       await axios
-        .post("/user/signup/", {
+        .post("https://fit-into-schedule-server.herokuapp.com/user/signup/", {
           email: email,
           password: password,
           name: name,

@@ -29,7 +29,7 @@ const MeetingView = ({ isMeetup }) => {
 
   const getUsers = async () => {
     await axios
-      .get("/user/get-all/")
+      .get("https://fit-into-schedule-server.herokuapp.com/user/get-all/")
       .then((res) => {
         let aux_userData = [];
         res.data.forEach((item) => {

@@ -9,7 +9,10 @@ const Signin = () => {
     event.preventDefault();
 
     await axios
-      .post("/user/signin/", { email: email, password: password })
+      .post("https://fit-into-schedule-server.herokuapp.com/user/signin/", {
+        email: email,
+        password: password,
+      })
       .then((res) => {
         window.localStorage.setItem("user", JSON.stringify(res.data));
         window.location.href = "/";

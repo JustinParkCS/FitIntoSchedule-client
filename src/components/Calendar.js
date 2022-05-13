@@ -15,7 +15,7 @@ const Calendar = ({ userData, isMeetup }) => {
 
   const getMeetings = async () => {
     await axios
-      .get("/meeting/get-all/")
+      .get("https://fit-into-schedule-server.herokuapp.com/meeting/get-all/")
       .then((res) => {
         let aux_data = [];
         res.data.forEach((item) => {
@@ -45,7 +45,7 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const postMeeting = async (meetup) => {
     await axios
-      .post("/meeting/post", meetup)
+      .post("https://fit-into-schedule-server.herokuapp.com/meeting/post", meetup)
       .then((res) => {
         console.log(res.data);
         getMeetings();
@@ -56,7 +56,7 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const deleteEvent = async (eventData) => {
     await axios
-      .delete(`/meeting/delete/?id=${eventData.id}`)
+      .delete(`https://fit-into-schedule-server.herokuapp.com/meeting/delete/?id=${eventData.id}`)
       .then((res) => {
         console.log("Delete event -> ", res.data);
       })
@@ -66,7 +66,7 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const editEvent = async (eventData) => {
     await axios
-      .put(`/meeting/put/?id=${eventData.id}`, eventData)
+      .put(`https://fit-into-schedule-server.herokuapp.com/meeting/put/?id=${eventData.id}`, eventData)
       .then((res) => {
         console.log("Edit event -> ", res.data);
         getMeetings();
