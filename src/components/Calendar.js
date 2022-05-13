@@ -1,8 +1,6 @@
 import React from "react";
 import { DayPilot, DayPilotScheduler } from "daypilot-pro-react";
 import axios from "axios";
-// import moment from "moment";
-// import "moment-timezone";
 import moment from "moment-timezone";
 
 const Calendar = ({ userData, isMeetup }) => {
@@ -14,7 +12,7 @@ const Calendar = ({ userData, isMeetup }) => {
   const [user] = React.useState(
     JSON.parse(window.localStorage.getItem("user"))
   );
-  // console.log("user -> ", user);
+
   const getMeetings = async () => {
     await axios
       .get("/meeting/get-all/")
@@ -30,7 +28,6 @@ const Calendar = ({ userData, isMeetup }) => {
             .format()
             .slice(0, 19);
           if (!isMeetup) {
-            // if (false) {
             if (!item.user_b_agree) {
               aux_data.push(item);
             }

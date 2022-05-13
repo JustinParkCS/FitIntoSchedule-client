@@ -4,28 +4,28 @@ import Calendar from "../components/Calendar";
 // import { DayPilot, DayPilotScheduler } from "daypilot-pro-react";
 
 const MeetingView = ({ isMeetup }) => {
-  const [meetings, setMeetings] = React.useState([]);
+  // const [meetings, setMeetings] = React.useState([]);
   const [userData, setUserData] = React.useState([]);
   const [user] = React.useState(
     JSON.parse(window.localStorage.getItem("user"))
   );
 
-  const getMeetings = async () => {
-    await axios
-      .get("/meeting/get-all/")
-      .then((res) => {
-        res.data.forEach((item) => {
-          // console.log("item -> ", item);
-          item.start = item.start.split(".")[0];
-          item.end = item.end.split(".")[0];
-        });
-        // console.log("res.data -> ", res.data);
-        setMeetings(res.data);
-      })
-      .catch((err) => {
-        console.log("error getting meetings from /meeting/get-all, -> ", err);
-      });
-  };
+  // const getMeetings = async () => {
+  //   await axios
+  //     .get("/meeting/get-all/")
+  //     .then((res) => {
+  //       res.data.forEach((item) => {
+  //         // console.log("item -> ", item);
+  //         item.start = item.start.split(".")[0];
+  //         item.end = item.end.split(".")[0];
+  //       });
+  //       // console.log("res.data -> ", res.data);
+  //       setMeetings(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("error getting meetings from /meeting/get-all, -> ", err);
+  //     });
+  // };
 
   const getUsers = async () => {
     await axios
