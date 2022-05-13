@@ -33,7 +33,6 @@ const MeetingView = ({ isMeetup }) => {
       .then((res) => {
         let aux_userData = [];
         res.data.forEach((item) => {
-          console.log("get user -> ", item);
           let aux_obj = {
             name: item.name,
             id: item.email,

@@ -20,11 +20,11 @@ const Calendar = ({ userData, isMeetup }) => {
         let aux_data = [];
         res.data.forEach((item) => {
           item.start = moment(item.start, "YYYY-MM-DD HH:mm:ss")
-            .tz("US/Alaska")
+            // .tz("US/Alaska")
             .format()
             .slice(0, 19);
           item.end = moment(item.end, "YYYY-MM-DD HH:mm:ss")
-            .tz("US/Alaska")
+            // .tz("US/Alaska")
             .format()
             .slice(0, 19);
           if (!isMeetup) {
@@ -37,6 +37,7 @@ const Calendar = ({ userData, isMeetup }) => {
             }
           }
         });
+        console.log("meeting data -> ", aux_data);
         setMeetings(aux_data);
       })
       .catch((err) => {
@@ -45,7 +46,10 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const postMeeting = async (meetup) => {
     await axios
-      .post("https://fit-into-schedule-server.herokuapp.com/meeting/post", meetup)
+      .post(
+        "https://fit-into-schedule-server.herokuapp.com/meeting/post",
+        meetup
+      )
       .then((res) => {
         console.log(res.data);
         getMeetings();
@@ -56,7 +60,9 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const deleteEvent = async (eventData) => {
     await axios
-      .delete(`https://fit-into-schedule-server.herokuapp.com/meeting/delete/?id=${eventData.id}`)
+      .delete(
+        `https://fit-into-schedule-server.herokuapp.com/meeting/delete/?id=${eventData.id}`
+      )
       .then((res) => {
         console.log("Delete event -> ", res.data);
       })
@@ -66,7 +72,10 @@ const Calendar = ({ userData, isMeetup }) => {
   };
   const editEvent = async (eventData) => {
     await axios
-      .put(`https://fit-into-schedule-server.herokuapp.com/meeting/put/?id=${eventData.id}`, eventData)
+      .put(
+        `https://fit-into-schedule-server.herokuapp.com/meeting/put/?id=${eventData.id}`,
+        eventData
+      )
       .then((res) => {
         console.log("Edit event -> ", res.data);
         getMeetings();
@@ -84,7 +93,9 @@ const Calendar = ({ userData, isMeetup }) => {
       events: meetings,
       resources: userData,
     });
+    console.log("userData -> ", userData);
   }, [meetings, userData]);
+  React.useEffect(() => {}, [data]);
 
   return (
     <div className="relative mx-10 my-4">
