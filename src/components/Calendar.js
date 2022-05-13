@@ -37,7 +37,7 @@ const Calendar = ({ userData, isMeetup }) => {
             }
           }
         });
-        console.log("meeting data -> ", aux_data);
+        // console.log("meeting data -> ", aux_data);
         setMeetings(aux_data);
       })
       .catch((err) => {
@@ -93,7 +93,7 @@ const Calendar = ({ userData, isMeetup }) => {
       events: meetings,
       resources: userData,
     });
-    console.log("userData -> ", userData);
+    // console.log("userData -> ", userData);
   }, [meetings, userData]);
   React.useEffect(() => {}, [data]);
 
