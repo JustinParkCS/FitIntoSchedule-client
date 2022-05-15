@@ -18,7 +18,7 @@ function App() {
         <div>
           <Navbar />
         </div>
-        <div className="p-4">
+        <div className="p-4 w-full">
           <Routes>
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/message" element={<Messages />} />
